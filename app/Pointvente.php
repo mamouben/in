@@ -8,7 +8,7 @@ class Pointvente extends Model
 {
     protected $primaryKey = 'cle_pointvente';
     protected $table = 'pointvente';
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
         'nom_pointvente','lieu_pointvente','cle_pointvente'

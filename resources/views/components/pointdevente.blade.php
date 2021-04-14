@@ -10,8 +10,13 @@
     <div class="col-12">
         <div class="card m-b-30">
             <div class="card-body">
-                <button style="background-color: #9bcf5d;" type="button" class="btn btn-info btn-lg waves-effect waves-light">Nouveau point de vente</button>
+                <a style="background-color: #9bcf5d;" href="{{ route('pointdevente.add')}}" class="btn btn-info btn-lg waves-effect waves-light">Nouveau point de vente</a>
                 <hr/>
+                @if ($message = Session::get('success'))
+                  <div class="alert alert-success">
+                      <h5>{{$message}}</h5>
+                  </div>
+                  @endif
                 <h4 class="mt-0 header-title">Liste des points de vente</h4>
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
@@ -21,45 +26,24 @@
                         <th>Action</th>
                     </tr>
                     </thead>
-
-
                     <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                            
-                        </td>
-                    </tr>
+                        @foreach ($pointdevente as $pointdevente)
+                            <tr>
+                                <td>{{$pointdevente->nom_pointvente}}</td>
+                                <td>{{$pointdevente->lieu_pointvente}}</td>
+                                <td>
+                                    <form method="POST" action="{{route('pointdevente.destroy',$pointdevente->cle_pointvente)}}">
+                                        <a class="btn btn-info waves-effect waves-light" href="{{ route('pointdevente.edit',$pointdevente->cle_pointvente)}}">Modifier</a>
+                                        {{csrf_field()}}
+                                        {{method_field('DELETE')}}
+                                        <button type="submit" class="btn btn-danger waves-effect waves-light">delete</button>
+                                        
+                                    </form>
+                                    
+                                    
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
 

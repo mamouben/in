@@ -174,6 +174,8 @@
 <script src="{{ asset('assets/js/waves.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
 
+<script src="{{ asset('assets/js/myjs.js') }}"></script>
+
 <!--Morris Chart-->
 <script src="{{ asset('plugins/morris/morris.min.js') }}"></script>
 <script src="{{ asset('plugins/raphael/raphael.min.js') }}"></script>

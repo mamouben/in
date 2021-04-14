@@ -8,7 +8,7 @@ class Conteneur extends Model
 {
     protected $primaryKey = 'cle_conteneurs';
     protected $table = 'conteneurs';
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
         'montant_devise','taux_change','num_d10','date_d10','contre_valeur','droits_douanes','taxe_domiciliation',

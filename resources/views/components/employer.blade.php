@@ -10,8 +10,13 @@
     <div class="col-12">
         <div class="card m-b-30">
             <div class="card-body">
-                <button style="background-color: #9bcf5d;" type="button" class="btn btn-info btn-lg waves-effect waves-light">Nouveau employer</button>
+                <a href="{{ route('employer.add')}}" style="background-color: #9bcf5d;" class="btn btn-info btn-lg waves-effect waves-light">Nouveau employer</a>
                 <hr/>
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <h5>{{$message}}</h5>
+                </div>
+                @endif
                 <h4 class="mt-0 header-title">Liste des employers</h4>
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
@@ -24,57 +29,25 @@
                         <th>Action</th>
                     </tr>
                     </thead>
-
-
                     <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                            
-                        </td>
-                    </tr>
+                        @foreach ($employer as $employer)
+                            <tr>
+                                <td>{{$employer->nom_employer}}</td>
+                                <td>{{$employer->prenom_employer}}</td>
+                                <td>{{$employer->tel_employer}}</td>
+                                <td>{{$employer->mail_employer}}</td>
+                                <td>{{$employer->poste_employer}}</td>
+                                <td>
+                                    <form method="POST" action="{{route('employer.destroy',$employer->cle_employer)}}">
+                                        <a class="btn btn-info waves-effect waves-light" href="{{ route('employer.edit',$employer->cle_employer)}}">Modifier</a>
+                                        {{csrf_field()}}
+                                        {{method_field('DELETE')}}
+                                        <button type="submit" class="btn btn-danger waves-effect waves-light">delete</button>
+                                    </form>
+                                    
+                                    
+                            </td>
+                        @endforeach
                     </tbody>
                 </table>
 

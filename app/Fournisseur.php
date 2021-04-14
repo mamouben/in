@@ -8,7 +8,7 @@ class Fournisseur extends Model
 {
     protected $primaryKey = 'cle_fournisseur';
     protected $table = 'fournisseur';
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
         'nom__fournisseur','tel_fournisseur','mail_fournisseur','cle_fournisseur'

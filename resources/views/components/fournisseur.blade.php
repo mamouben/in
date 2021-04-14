@@ -10,57 +10,38 @@
     <div class="col-12">
         <div class="card m-b-30">
             <div class="card-body">
-                <button style="background-color: #9bcf5d;" type="button" class="btn btn-info btn-lg waves-effect waves-light">Nouveau fournisseur</button>
+                <a href="{{ route('fournisseur.add')}}" style="background-color: #9bcf5d;" class="btn btn-info btn-lg waves-effect waves-light">Nouveau fournisseur</a>
                 <hr/>
+                @if ($message = Session::get('success'))
+                  <div class="alert alert-success">
+                      <h5>{{$message}}</h5>
+                  </div>
+                  @endif
                 <h4 class="mt-0 header-title">Liste des fournisseur</h4>
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                     <tr>
-                        <th>Fournisseur</th>
+                        <th>Fournisseur</th> 
                         <th>Téléphone</th>
                         <th>Mail</th>
                         <th>Action</th>
                     </tr>
                     </thead>
-
-
                     <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                        </td>
-                    </tr>
+                        @foreach ($fournisseur as $fournisseur)
+                            <tr>
+                                <td>{{$fournisseur->nom__fournisseur}}</td>
+                                <td>{{$fournisseur->tel_fournisseur}}</td>
+                                <td>{{$fournisseur->mail_fournisseur}}</td>
+                                <td>
+                                    <form method="POST" action="{{route('fournisseur.destroy',$fournisseur->cle_fournisseur)}}">
+                                        <a class="btn btn-info waves-effect waves-light" href="{{ route('fournisseur.edit',$fournisseur->cle_fournisseur)}}">Modifier</a>
+                                        {{csrf_field()}}
+                                        {{method_field('DELETE')}}
+                                        <button type="submit" class="btn btn-danger waves-effect waves-light">delete</button>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
 

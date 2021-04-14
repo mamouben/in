@@ -10,8 +10,13 @@
     <div class="col-12">
         <div class="card m-b-30">
             <div class="card-body">
-                <button style="background-color: #9bcf5d;" type="button" class="btn btn-info btn-lg waves-effect waves-light">Nouveau produit</button>
+                <a href="{{ route('produit.add')}}" style="background-color: #9bcf5d;" type="button" class="btn btn-info btn-lg waves-effect waves-light">Nouveau produit</a>
                 <hr/>
+                @if ($message = Session::get('success'))
+                  <div class="alert alert-success">
+                      <h5>{{$message}}</h5>
+                  </div>
+                  @endif
                 <h4 class="mt-0 header-title">Liste des Produits</h4>
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
@@ -26,50 +31,23 @@
 
 
                     <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                            <button type="button" class="btn btn-info waves-effect waves-light">Stock</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                            <button type="button" class="btn btn-info waves-effect waves-light">Stock</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                            <button type="button" class="btn btn-info waves-effect waves-light">Stock</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>Tiger Nixon</td>
-                        <td>
-                            <button type="button" class="btn btn-info waves-effect waves-light">update</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light">delete</button>
-                            <button type="button" class="btn btn-info waves-effect waves-light">Stock</button>
-                        </td>
-                    </tr>
+                        @foreach ($produit as $produit)
+                            <tr>
+                                <td>{{$produit->ref_produits}}</td>
+                                <td>{{$produit->nom_produits}}</td>
+                                <td>{{$produit->nom_categorie_produis}}</td>
+                                <td>{{$produit->nom__fournisseur}}</td>
+                                <td>
+                                    <form method="POST" action="{{route('produit.destroy',$produit->cle_produits)}}">
+                                        <a class="btn btn-info waves-effect waves-light" href="{{ route('produit.edit',$produit->cle_produits)}}">Modifier</a>
+                                        {{csrf_field()}}
+                                        {{method_field('DELETE')}}
+                                        <button type="submit" class="btn btn-danger waves-effect waves-light">Supprimer</button>
+                                        <button type="button" class="btn btn-info waves-effect waves-light">Stock</button>
+                                    </form>
+                                </td>
+                            </tr>
+                         @endforeach
                     </tbody>
                 </table>
 
