@@ -35,12 +35,12 @@
                         @foreach ($client as $client) 
                             <tr>
                                 <td>{{$client->type_client_client}}</td>
+                                <td>{{$client->entreprise_client}}</td>
+                                <td>{{$client->rc_client}}</td>
                                 <td>{{$client->nom_client}}</td>
                                 <td>{{$client->prénom_client}}</td>
                                 <td>{{$client->téléphone_client}}</td>
                                 <td>{{$client->mail_client_client}}</td>
-                                <td>{{$client->entreprise_client}}</td>
-                                <td>{{$client->rc_client}}</td>
                                 <td>
                                     <form method="POST" action="{{route('clients.destroy',$client->cle_client)}}">
                                         <a class="btn btn-primary" href="{{ route('clients.edit',$client->cle_client)}}">Modifier</a>

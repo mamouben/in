@@ -36,8 +36,8 @@
                                         <a class="btn btn-info waves-effect waves-light" href="{{ route('pointdevente.edit',$pointdevente->cle_pointvente)}}">Modifier</a>
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
-                                        <button type="submit" class="btn btn-danger waves-effect waves-light">delete</button>
-                                        
+                                        <button type="submit" class="btn btn-danger waves-effect waves-light">Supprimer</button>
+                                        <a class="btn btn-info waves-effect waves-light" href="{{ route('pointdevente.stock',$pointdevente->cle_pointvente)}}">Stock</a>
                                     </form>
                                     
                                     

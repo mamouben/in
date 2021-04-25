@@ -31,23 +31,27 @@
                                     @csrf
                                     <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12">
                                         <label>Montent devise</label>
-                                        <input name="montant_devise" type="number" class="form-control"/>
+                                        <input step="any" name="montant_devise" type="number" class="form-control"/>
                                     </div>
                                     <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12">
                                         <label>Taux de change</label>
-                                        <input name="taux_change" type="number" class="form-control"/>
+                                        <input step="any" name="taux_change" type="number" class="form-control"/>
                                     </div>
-                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                                         <label>N° du D 10</label>
-                                        <input name="num_d10" type="number" class="form-control"/>
+                                        <input name="num_d10" type="text" class="form-control"/>
                                     </div>
-                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                                         <label>Date du D 10</label>
                                         <input name="date_d10" type="date" class="form-control"/>
                                     </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                                        <label>Fret</label>
+                                        <input name="fret" type="number" step="any" class="form-control"/>
+                                    </div>
                                     <div class="form-group col-lg-3 col-md-3 col-sm-12 col-12">
                                         <label>Contre valeur DA</label>
-                                        <input name="contre_valeur" type="number" class="form-control"/>
+                                        <input step="any" name="contre_valeur" type="number" class="form-control"/>
                                     </div>
                                     <div class="form-group col-lg-3 col-md-3 col-sm-12 col-12">
                                         <label>Droit de douanes</label>
@@ -55,35 +59,35 @@
                                     </div>
                                     <div class="form-group col-lg-3 col-md-3 col-sm-12 col-12">
                                         <label>Taxe de domiciliation</label>
-                                        <input name="taxe_domiciliation" type="number" class="form-control"/>
+                                        <input step="any" name="taxe_domiciliation" type="number" class="form-control"/>
                                     </div>
                                     <div class="form-group col-lg-3 col-md-3 col-sm-12 col-12">
                                         <label>Frais de transit</label>
-                                        <input name="frais_transit" type="number" class="form-control"/>
+                                        <input step="any" name="frais_transit" type="number" class="form-control"/>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                                         <label>Consignation maritime</label>
-                                        <input name="consignation_maritime" type="number" class="form-control"/>
+                                        <input step="any" name="consignation_maritime" type="number" class="form-control"/>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                                         <label>Magasinage manutention</label>
-                                        <input name="magasinage_manutention1" type="number" class="form-control"/>
+                                        <input step="any" name="magasinage_manutention1" type="number" class="form-control"/>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                                         <label>Magasinage manutention</label>
-                                        <input name="magasinage_manutention2" type="number" class="form-control"/>
+                                        <input step="any" name="magasinage_manutention2" type="number" class="form-control"/>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                                         <label>Surestaries</label>
-                                        <input name="surestaries" type="number" class="form-control"/>
+                                        <input step="any" name="surestaries" type="number" class="form-control"/>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                                         <label>Transport</label>
-                                        <input name="transport" type="number" class="form-control"/>
+                                        <input step="any" name="transport" type="number" class="form-control"/>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                                         <label>Autre frais</label>
-                                        <input name="autresfrais" type="number" class="form-control"/>
+                                        <input step="any" name="autresfrais" type="number" class="form-control"/>
                                     </div>
                                     
                                     <div class="form-group">

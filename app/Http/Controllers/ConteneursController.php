@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Conteneur;
+use App\Lotconteneur;
 use Illuminate\Http\Request;
 
 class ConteneursController extends Controller
@@ -22,6 +23,7 @@ class ConteneursController extends Controller
             'taux_change' => $request->taux_change,
             'num_d10' => $request->num_d10,
             'date_d10' => $request->date_d10,
+            'fret' => $request->fret_lotproduit,
             'contre_valeur' => $request->contre_valeur,
             'droits_douanes' => $request->droits_douanes,
             'taxe_domiciliation' => $request->taxe_domiciliation,
@@ -44,6 +46,16 @@ class ConteneursController extends Controller
  
          return view('components.editconteneurs')->with('data',$data);
      }
+     public function listlot($conteneur){
+        // dd($conteneur);
+        $totalPrice = Lotconteneur::where('id_conteneur', $conteneur)->sum('montant_devis_lotproduit');
+        
+        $data = Lotconteneur::leftJoin('produits','cle_produits','=','id_produit')->
+        leftJoin('conteneurs','cle_conteneurs','=','id_conteneur')->
+        where('id_conteneur', $conteneur)->get();
+        
+         return view('components.lotconteneur')->with('data',$data)->with('total',$totalPrice);
+     }
      public function update(Request $request,$conteneur){
         
         //dd($requestConteneur);
@@ -53,6 +65,7 @@ class ConteneursController extends Controller
             $data->taux_change = $request->taux_change;
             $data->num_d10 = $request->num_d10;
             $data->date_d10 = $request->date_d10;
+            $data->fret_lotproduit = $request->fret;
             $data->contre_valeur = $request->contre_valeur;
             $data->droits_douanes = $request->droits_douanes;
             $data->taxe_domiciliation = $request->taxe_domiciliation;

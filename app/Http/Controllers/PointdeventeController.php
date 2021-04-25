@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Pointvente;
+use App\Stockpoinvente;
 use Illuminate\Http\Request;
 
 class PointdeventeController extends Controller
@@ -45,4 +46,18 @@ class PointdeventeController extends Controller
         $data->delete();
         return redirect('/pointdevente')->with('success','Point de vente Supprimer');
     }
+    //stock
+    public function stock($pointdevente){
+        $data = Stockpoinvente::leftJoin('produits','cle_produits','=','stockpoinvente.id_produit')->
+        where('id_pointvente', $pointdevente)->get();
+        //dd($data);
+         return view('components.stockpointdevente')->with('data',$data);
+     }
+     public function destroystock($pointdevente){
+        $data = Stockpoinvente::find($pointdevente);
+
+        $data->delete();
+        return redirect()->back()->with('success','Produit point de vente Supprimer');
+    }
+
 }

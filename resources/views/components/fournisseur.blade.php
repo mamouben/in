@@ -38,7 +38,7 @@
                                         <a class="btn btn-info waves-effect waves-light" href="{{ route('fournisseur.edit',$fournisseur->cle_fournisseur)}}">Modifier</a>
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
-                                        <button type="submit" class="btn btn-danger waves-effect waves-light">delete</button>
+                                        <button type="submit" class="btn btn-danger waves-effect waves-light">Supprimer</button>
                                 </td>
                             </tr>
                         @endforeach

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\Produit;
 use App\Categorie;
 use App\Fournisseur;
+use App\Lotconteneur;
+use App\Pointvente;
+use App\Stockpoinvente;
 use Illuminate\Http\Request;
 
 class ProduitsController extends Controller
@@ -60,4 +63,35 @@ class ProduitsController extends Controller
         $data->delete();
         return redirect('/produits')->with('success','Produit Supprimer');
     }
+    //stock
+    public function stock($produit){
+        $datapoinvente = Pointvente::all();
+        $data = Lotconteneur::leftJoin('conteneurs','cle_conteneurs','=','lotproduit.id_conteneur')->
+        leftJoin('pointvente','cle_pointvente','=','lotproduit.id_lieu_stockage')->
+        where('id_produit', $produit)->get();
+        //dd($data);
+         return view('components.stock')->with('data',$data)->with('datapoinvente',$datapoinvente);
+     }
+     public function transfere(Request $request,$produit){
+        //dd($produit);
+     
+        $data = Lotconteneur::find($produit);
+        if($data->quantite_lotproduit_actuel >= $request->quantite_lot){
+
+            $data->quantite_lotproduit_actuel = ($data->quantite_lotproduit_actuel - $request->quantite_lot);
+            $data->save();
+            Stockpoinvente::create([
+                'quantite_stockpoinvente' => $request->quantite_lot,
+                'id_produit' => $data->id_produit,
+                'id_pointvente' => $request->select_pointvente,
+                'datetransfere_stockpoinvente' => date('Y-m-d'),
+            ]);
+            return redirect('/stock/'.$data->id_produit)->with('success','Produit transférer');
+        }
+        else{
+            return redirect()->back()->with('success','Veillez saisire une quantité valide');
+        }
+        
+    }
+
 }

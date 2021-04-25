@@ -46,8 +46,8 @@
                     <!-- Logo-->
                     <div>
                         
-                        <a href="/" class="logo">
-                            <img src="assets/images/logo.png" alt="" height="50"> 
+                        <a href="/inout/" class="logo">
+                            <img src="{{ url('assets/images/logo.png')}}" alt="" height="50"> 
                         </a>
 
                     </div>
@@ -57,37 +57,37 @@
 
                         <ul class="navigation-menu">
                             <li class="has-submenu">
-                                <a href="/" class="text-white"><i class="dripicons-home"></i>Accueil</a>
+                                <a href="/inout/" class="text-white"><i class="dripicons-home"></i>Accueil</a>
                             </li>
                             <li class="has-submenu">
                                 <a href="#" class="text-white"><i class="dripicons-product"></i>Produits <i class="mdi mdi-chevron-down mdi-drop"></i></a>
                                 <ul class="submenu megamenu">
                                     <li>
                                         <ul>
-                                            <li><a href="/produits">Liste des Produits</a></li>
-                                            <li><a href="/categorie">Famille Produits</a></li>
-                                            <li><a href="/fournisseur">Fournisseur</a></li>
-                                            <li><a href="/conteneurs">Conteneurs</a></li>
+                                            <li><a href="/inout/produits">Liste des Produits</a></li>
+                                            <li><a href="/inout/categorie">Famille Produits</a></li>
+                                            <li><a href="/inout/fournisseur">Fournisseur</a></li>
+                                            <li><a href="/inout/conteneurs">Conteneurs</a></li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
                             <li class="has-submenu" >
-                                <a href="/employer" class="text-white"><i class="dripicons-home"></i>Employers</a>
+                                <a href="/inout/employer" class="text-white"><i class="dripicons-home"></i>Employers</a>
                             </li>
                             <li class="has-submenu">
                                 <a href="#" class="text-white"><i class="dripicons-product"></i>Clients <i class="mdi mdi-chevron-down mdi-drop"></i></a>
                                 <ul class="submenu megamenu">
                                     <li>
                                         <ul>
-                                            <li><a href="/clients">Clients particuliers</a></li>
-                                            <li><a href="/clientpro">Clients professionnels</a></li>
+                                            <li><a href="/inout/clients">Clients particuliers</a></li>
+                                            <li><a href="/inout/clientpro">Clients professionnels</a></li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
                             <li class="has-submenu" >
-                                <a href="/pointdevente" class="text-white"><i class="dripicons-home"></i>Points de vente</a>
+                                <a href="/inout/pointdevente" class="text-white"><i class="dripicons-home"></i>Points de vente</a>
                             </li>
                             <li class="has-submenu">
                                 <a href="#" class="text-white"><i class="dripicons-file"></i>Documents <i class="mdi mdi-chevron-down mdi-drop"></i></a>
@@ -113,16 +113,14 @@
                             <li class="list-inline-item dropdown notification-list nav-user">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="false" aria-expanded="false">
-                                    <img src="assets/images/users/avatar-6.jpg" alt="user" class="rounded-circle">
-                                    <span class="d-none d-md-inline-block ml-1">Mamou <i class="mdi mdi-chevron-down"></i> </span>
+                                    <img src="{{ url('assets/images/users/avatar-6.jpg')}}" alt="user" class="rounded-circle">
+                                    
+                                    <span class="d-none d-md-inline-block ml-1">Mon profile <i class="mdi mdi-chevron-down"></i> </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
                                     <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> Profile</a>
-                                    <a class="dropdown-item" href="#"><i class="dripicons-wallet text-muted"></i> My Wallet</a>
-                                    <a class="dropdown-item" href="#"><span class="badge badge-success float-right m-t-5">5</span><i class="dripicons-gear text-muted"></i> Settings</a>
-                                    <a class="dropdown-item" href="#"><i class="dripicons-lock text-muted"></i> Lock screen</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#"><i class="dripicons-exit text-muted"></i> Logout</a>
+                                    <a class="dropdown-item" href="#"><i class="dripicons-exit text-muted"></i> Déconnecion</a>
                                 </div>
                             </li>
                             <li class="menu-item list-inline-item">
@@ -199,6 +197,11 @@
 <!-- Datatable init js -->
 <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
 
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
 <!-- App js -->
 <script src="{{ asset('assets/js/app.js') }}"></script>

@@ -36,6 +36,9 @@ Route::post('/addproduit', 'ProduitsController@store');
 Route::get('/editproduit/{produis}', 'ProduitsController@edit')->name('produit.edit');
 Route::post('/editproduit/{produis}', 'ProduitsController@update')->name('produit.update');
 Route::delete('/produit{produit}', 'ProduitsController@destroy')->name('produit.destroy');
+// stock
+Route::get('/stock/{produis}', 'ProduitsController@stock')->name('produit.stock');
+Route::post('/stock/{produis}', 'ProduitsController@transfere');
 // employer crud
 Route::get('/employer', 'EmplyerController@index');
 Route::get('/addemployer', 'EmplyerController@add')->name('employer.add');
@@ -61,11 +64,21 @@ Route::post('/addpointdevente', 'PointdeventeController@store');
 Route::get('/editpointdevente/{pointdevente}', 'PointdeventeController@edit')->name('pointdevente.edit');
 Route::post('/editpointdevente/{pointdevente}', 'PointdeventeController@update')->name('pointdevente.update');
 Route::delete('/pointdevente{pointdevente}', 'PointdeventeController@destroy')->name('pointdevente.destroy');
-
+// stock poin de vente pointdevente.stock
+Route::get('/stockpointdevente/{pointdevente}', 'PointdeventeController@stock')->name('pointdevente.stock');
+Route::delete('/stockpointdevente{pointdevente}', 'PointdeventeController@destroystock')->name('pointdeventestock.destroy');
 // Conteneurs crud
 Route::get('/conteneurs', 'ConteneursController@index');
 Route::get('/addconteneurs', 'ConteneursController@add')->name('conteneurs.add');
 Route::post('/addconteneurs', 'ConteneursController@store');
 Route::get('/editconteneurs/{conteneur}', 'ConteneursController@edit')->name('conteneurs.edit');
+Route::get('/lotconteneurs/{conteneur}', 'ConteneursController@listlot')->name('conteneurs.lot');
 Route::post('/editconteneurs/{conteneur}', 'ConteneursController@update')->name('conteneurs.update');
 Route::delete('/conteneurs{conteneur}', 'ConteneursController@destroy')->name('conteneurs.destroy');
+
+//Lot produit
+Route::get('/addlot/{id}', 'LotproduitController@add')->name('lotproduit.add');
+Route::post('/addlot/{id}', 'LotproduitController@store');
+Route::get('/editlot/{id}', 'LotproduitController@edit')->name('lot.edit');
+Route::post('/editlot/{id}', 'LotproduitController@update')->name('lot.update');
+Route::delete('/lotconteneurs{conteneur}', 'LotproduitController@destroy')->name('lot.destroy');

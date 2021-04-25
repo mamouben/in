@@ -25,6 +25,7 @@
                         <th>Taux de change</th>
                         <th>N° du D10</th>
                         <th>Date du D10</th>
+                        <th>Fret</th>
                         <th>Contre valeur en D.A</th>
                         <th>Droits de douanes</th>
                         <th>Taxe de domiciliation</th>
@@ -46,6 +47,7 @@
                                 <td>{{$conteneurs->taux_change}}</td>
                                 <td>{{$conteneurs->num_d10}}</td>
                                 <td>{{$conteneurs->date_d10}}</td>
+                                <td>{{$conteneurs->fret_lotproduit}}</td>
                                 <td>{{$conteneurs->contre_valeur}}</td>
                                 <td>{{$conteneurs->droits_douanes}}</td>
                                 <td>{{$conteneurs->taxe_domiciliation}}</td>
@@ -60,9 +62,11 @@
                                 <td>
                                     <form method="POST" action="{{route('conteneurs.destroy',$conteneurs->cle_conteneurs)}}">
                                         <a class="btn btn-info waves-effect waves-light" href="{{ route('conteneurs.edit',$conteneurs->cle_conteneurs)}}">Modifier</a>
+                                        
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
                                         <button type="submit" class="btn btn-danger waves-effect waves-light">Supprimer</button>
+                                        <a class="btn btn-info waves-effect waves-light" href="{{ route('conteneurs.lot',$conteneurs->cle_conteneurs)}}">Lot de produits</a>
                                     </form>
                                    
                                     

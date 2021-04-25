@@ -10,44 +10,50 @@
     <div class="col-12">
         <div class="card m-b-30">
             <div class="card-body">
-                <a href="{{ route('produit.add')}}" style="background-color: #9bcf5d;" type="button" class="btn btn-info btn-lg waves-effect waves-light">Nouveau produit</a>
+                
                 <hr/>
                 @if ($message = Session::get('success'))
                   <div class="alert alert-success">
                       <h5>{{$message}}</h5>
                   </div>
-                  @endif
-                <h4 class="mt-0 header-title">Liste des Produits</h4>
+                @endif
+                <h4 class="mt-0 header-title">Liste des Produits dans le stock</h4>
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                     <tr>
-                        <th>Réderance</th>
-                        <th>Nom produit</th>
-                        <th>Famille produits</th>
-                        <th>Fournisseur</th>
+                        <th>Réference</th>
+                        <th>Produit</th>
+                        <th>Quantité</th>
+                        <th>Date de transfere</th>
                         <th>Action</th>
                     </tr>
                     </thead>
 
 
                     <tbody>
-                        @foreach ($produit as $produit)
-                            <tr>
-                                <td>{{$produit->ref_produits}}</td>
-                                <td>{{$produit->nom_produits}}</td>
-                                <td>{{$produit->nom_categorie_produis}}</td>
-                                <td>{{$produit->nom__fournisseur}}</td>
+                        {{$lot = 0}}
+                        @foreach ($data as $data)
+
+                            @if (($data->quantite_stockpoinvente) == 0)
+                                {{$calssered = 'quantitemin'}}
+                                @else
+                                {{$calssered = ''}}
+                            @endif
+                            <tr class="{{$calssered}}">
+                                <td>{{$data->ref_produits}}</td>
+                                <td>{{$data->nom_produits}}</td>
+                                <td>{{$data->quantite_stockpoinvente}}</td>
+                                <td>{{$data->datetransfere_stockpoinvente}}</td>
                                 <td>
-                                    <form method="POST" action="{{route('produit.destroy',$produit->cle_produits)}}">
-                                        <a class="btn btn-info waves-effect waves-light" href="{{ route('produit.edit',$produit->cle_produits)}}">Modifier</a>
+                                    <form method="POST" action="{{route('pointdeventestock.destroy',$data->cle_stockpoinvente)}}">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
                                         <button type="submit" class="btn btn-danger waves-effect waves-light">Supprimer</button>
-                                        <a class="btn btn-info waves-effect waves-light" href="{{ route('produit.stock',$produit->cle_produits)}}">Stock</a>
                                     </form>
+                                   
                                 </td>
                             </tr>
-                         @endforeach
+                        @endforeach
                     </tbody>
                 </table>
 
